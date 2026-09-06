@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Subsidence Early Warning System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TOP HEADER -->
+    <header class="top-header">
+
+        <div class="brand">
+            <div class="shield">⬡</div>
+            <div>
+                <h1>MINE SUBSIDENCE EARLY WARNING</h1>
+                <p>SYSTEM</p>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+        <div class="operator">
+            SIH 2026 | CONTROL ROOM
+            <br>
+            <span>Operator Dashboard</span>
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+
+        <button class="nav-item active">◉ Overview</button>
+        <button class="nav-item">▣ Mine Map</button>
+        <button class="nav-item">⌁ Sensor Nodes</button>
+        <button class="nav-item">⌁ Subsidence Analysis</button>
+        <button class="nav-item">◉ AI Prediction</button>
+        <button class="nav-item">♧ Alerts <span class="alert-count">3</span></button>
+
+    </nav>
+
+
+    <!-- PRESENTATION MESSAGE -->
+    <section class="presentation">
+        <span>⚡</span>
+        <b>SIH 2026 PRESENTATION MODE:</b>
+        Demonstrating AI-Enabled Underground Coal Mine Early Warning Capabilities
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard">
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="card-title">
+                    TOTAL SENSOR NODES
+                    <span>▣</span>
+                </div>
+                <div class="number" id="totalNodes">23</div>
+                <div class="card-bottom">All configured nodes</div>
+            </div>
+
+            <div class="stat-card online">
+                <div class="card-title">
+                    ONLINE NODES
+                    <span>✓</span>
+                </div>
+                <div class="number" id="onlineNodes">20</div>
+                <div class="card-bottom">Telemetry active</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="card-title">
+                    OFFLINE NODES
+                    <span>×</span>
+                </div>
+                <div class="number" id="offlineNodes">3</div>
+                <div class="card-bottom">Maintenance needed</div>
+            </div>
+
+            <div class="stat-card warning">
+                <div class="card-title">
+                    MINE SAFETY SCORE
+                    <span>♢</span>
+                </div>
+                <div class="number" id="safetyScore">78/100</div>
+                <div class="card-bottom">⚠ Moderate risk</div>
+            </div>
+
+            <div class="stat-card warning">
+                <div class="card-title">
+                    ACTIVE WARNINGS
+                    <span>△</span>
+                </div>
+                <div class="number" id="activeWarnings">3</div>
+                <div class="card-bottom">Roof / Tilt variance</div>
+            </div>
+
+            <div class="stat-card critical">
+                <div class="card-title">
+                    CRITICAL ALERTS
+                    <span>!</span>
+                </div>
+                <div class="number" id="criticalAlerts">1</div>
+                <div class="card-bottom">Immediate inspection</div>
+            </div>
+
+        </section>
+
+
+        <!-- MAIN TWO COLUMN AREA -->
+        <section class="main-grid">
+
+            <!-- MINE MAP -->
+            <div class="panel mine-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>UNDERGROUND COAL MINE MAP</h2>
+                        <p>Cross-section telemetry grid</p>
+                    </div>
+
+                    <div class="map-controls">
+                        <button>ALL</button>
+                        <button>CRITICAL</button>
+                        <button>WARNING</button>
+                        <button>OFFLINE</button>
+                    </div>
+                </div>
+
+
+                <div class="mine-map">
+
+                    <div class="surface-line">
+                        SURFACE LEVEL
+                    </div>
+
+                    <div class="gateway">
+                        📡
+                        <span>LoRa Gateway</span>
+                    </div>
+
+                    <div class="mine-label">
+                        PANEL A — MAIN HAULAGE
+                    </div>
+
+                    <!-- TUNNELS -->
+                    <div class="tunnel tunnel-1"></div>
+                    <div class="tunnel tunnel-2"></div>
+                    <div class="tunnel tunnel-3"></div>
+
+                    <!-- SENSOR NODES -->
+                    <button class="sensor safe s1" onclick="showSensor('SN-001')">S1</button>
+                    <button class="sensor safe s2" onclick="showSensor('SN-002')">S2</button>
+                    <button class="sensor warning-node s3" onclick="showSensor('SN-003')">S3</button>
+                    <button class="sensor safe s4" onclick="showSensor('SN-004')">S4</button>
+                    <button class="sensor safe s5" onclick="showSensor('SN-005')">S5</button>
+                    <button class="sensor warning-node s6" onclick="showSensor('SN-006')">S6</button>
+                    <button class="sensor critical-node s7" onclick="showSensor('SN-007')">S7</button>
+
+                    <div class="mine-road road-1"></div>
+                    <div class="mine-road road-2"></div>
+
+                    <div class="map-legend">
+                        <span><i class="green"></i> Safe</span>
+                        <span><i class="yellow"></i> Warning</span>
+                        <span><i class="red"></i> Critical</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SENSOR DETAILS -->
+            <div class="right-column">
+
+                <div class="panel sensor-details">
+
+                    <div class="panel-header">
+                        <h2>SELECTED SENSOR</h2>
+                        <span class="critical-badge" id="sensorStatus">
+                            CRITICAL
+                        </span>
+                    </div>
+
+                    <h3 id="sensorName">SN-003</h3>
+
+                    <p class="location">
+                        📍 Panel B — Zone 4
+                    </p>
+
+                    <div class="sensor-value">
+                        <span>Roof Displacement</span>
+                        <strong id="displacement">17.46 mm</strong>
+                    </div>
+
+                    <div class="sensor-value">
+                        <span>Tilt Angle</span>
+                        <strong id="tilt">8.72°</strong>
+                    </div>
+
+                    <div class="sensor-value">
+                        <span>Rock Pressure / Stress</span>
+                        <strong id="stress">342 kPa</strong>
+                    </div>
+
+                    <div class="risk-box">
+                        <span>AI ANOMALY INDEX</span>
+                        <strong id="aiScore">0.94 / 1.00</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- ATMOSPHERE -->
+                <div class="panel atmosphere">
+
+                    <div class="panel-header">
+                        <h2>UNDERGROUND ATMOSPHERE</h2>
+                        <span>LIVE</span>
+                    </div>
+
+                    <div class="gas-grid">
+
+                        <div>
+                            <small>Methane (CH₄)</small>
+                            <strong>0.82%</strong>
+                            <em>SAFE</em>
+                        </div>
+
+                        <div>
+                            <small>Carbon Monoxide</small>
+                            <strong>18 ppm</strong>
+                            <em>SAFE</em>
+                        </div>
+
+                        <div>
+                            <small>Oxygen (O₂)</small>
+                            <strong>19.8%</strong>
+                            <em>NORMAL</em>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM SECTION -->
+        <section class="bottom-grid">
+
+            <!-- GRAPH -->
+            <div class="panel graph-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>SUBSIDENCE TREND</h2>
+                        <p>Roof displacement over the last 6 hours</p>
+                    </div>
+
+                    <div class="live-label">
+                        ● LIVE DATA
+                    </div>
+                </div>
+
+                <div class="chart">
+                    <div class="y-label y1">20</div>
+                    <div class="y-label y2">15</div>
+                    <div class="y-label y3">10</div>
+                    <div class="y-label y4">5</div>
+                    <div class="y-label y5">0</div>
+
+                    <div class="grid-line line1"></div>
+                    <div class="grid-line line2"></div>
+                    <div class="grid-line line3"></div>
+                    <div class="grid-line line4"></div>
+                    <div class="grid-line line5"></div>
+
+                    <svg viewBox="0 0 800 250" preserveAspectRatio="none">
+
+                        <polyline
+                            points="20,210 150,190 280,165 410,130 540,90 670,55 780,25"
+                            fill="none"
+                            stroke="#38d9a9"
+                            stroke-width="4"
+                        />
+
+                        <circle cx="20" cy="210" r="6"/>
+                        <circle cx="150" cy="190" r="6"/>
+                        <circle cx="280" cy="165" r="6"/>
+                        <circle cx="410" cy="130" r="6"/>
+                        <circle cx="540" cy="90" r="6"/>
+                        <circle cx="670" cy="55" r="6"/>
+                        <circle cx="780" cy="25" r="7"/>
+
+                    </svg>
+
+                    <div class="x-labels">
+                        <span>12 PM</span>
+                        <span>1 PM</span>
+                        <span>2 PM</span>
+                        <span>3 PM</span>
+                        <span>4 PM</span>
+                        <span>5 PM</span>
+                        <span>6 PM</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ALERT -->
+            <div class="panel alert-panel">
+
+                <div class="panel-header">
+                    <h2>⚠ ACTIVE ALERT</h2>
+                    <span class="critical-badge">CRITICAL</span>
+                </div>
+
+                <div class="alert-content">
+
+                    <h3>Roof displacement detected</h3>
+
+                    <p>
+                        Sensor <b>SN-003</b> has detected abnormal
+                        displacement and tilt values.
+                    </p>
+
+                    <div class="alert-reading">
+                        <div>
+                            <span>Displacement</span>
+                            <strong>17.46 mm</strong>
+                        </div>
+
+                        <div>
+                            <span>Tilt</span>
+                            <strong>8.72°</strong>
+                        </div>
+                    </div>
+
+                    <button class="inspect-btn" onclick="inspectAlert()">
+                        VIEW SENSOR DETAILS →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        MINE SAFETY EARLY WARNING SYSTEM
+        <span>•</span>
+        SIH 2026 Prototype
+        <span>•</span>
+        Last telemetry: <b id="time">just now</b>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
